@@ -13,7 +13,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve
 
         for(int i = 2; i <= max; i++)
         {
-            if(isPrime(i))
+            if(!invalid[i] && isPrime(i))
             {
                 invalidPrimes(i);
             }
