@@ -15,7 +15,6 @@ public class EratosthenesPrimeSieve implements PrimeSieve
         {
             isPrime(i);
         }
-        print();
     }
 
     private void fillArray(int max)
@@ -54,7 +53,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve
         {
             if(!invalid[i])
             {
-                System.out.println("[" + i + "] : " + invalid[i]);
+                System.out.println(i);
             }
         }
     }
