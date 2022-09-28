@@ -13,13 +13,18 @@ public class EratosthenesPrimeSieve implements PrimeSieve
 
         for(int i = 2; i <= max; i++)
         {
-            isPrime(i);
+            if(isPrime(i))
+            {
+                invalidPrimes(i);
+            }
         }
     }
 
     private void fillArray(int max)
     {
-        for(int i = 0; i <= max; i++)
+        invalid[0] = true;
+        invalid[1] = true;
+        for(int i = 2; i <= max; i++)
         {
             invalid[i] = false;
         }
@@ -28,22 +33,21 @@ public class EratosthenesPrimeSieve implements PrimeSieve
     @Override
     public boolean isPrime(int p)
     {
-        boolean check = false;
         if(invalid[p] == false)
         {
-            int j = p+p;
-            for(int i = j; i <= invalid.length; i++)
-            {
-                if(check)
-                {
-                    i = i-1;
-                }
-                invalid[i] = true;
-                i = i+p;
-                check = true;
-            }
+            return true;
         }
         return false;
+    }
+
+    private void invalidPrimes(int p)
+    {
+        int i = p+p;
+        while(i < invalid.length)
+        {
+            invalid[i] = true;
+            i = i+p;
+        }
     }
 
     @Override
@@ -56,13 +60,6 @@ public class EratosthenesPrimeSieve implements PrimeSieve
                 System.out.println(i);
             }
         }
-    }
-
-    private void print()
-    {
-        for(int i = 0; i < invalid.length; i++)
-        {
-            System.out.println("[" + i + "] : " + invalid[i]);
-        }
+        System.out.println();
     }
 }
