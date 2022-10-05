@@ -83,6 +83,35 @@ public class Main
                     return new Number(a, b);
                 }
         );
+
+        AbstractCalculator complex = new ComplexCalculator(
+                (x, y) ->
+                {
+                    return new Number(x.getA()+y.getA(), x.getB()+y.getB());
+                },
+                (x, y) ->
+                {
+                    return new Number(x.getA()-y.getA(), x.getB()-y.getB());
+                },
+                (x, y) ->
+                {
+                    return mult(x, y);
+                },
+                (x, y) ->
+                {
+                    Number n = new Number(y.getA(), -y.getB());
+                    n = mult(x, n);
+                    double b = Math.pow(y.getA(), 2) + Math.pow(y.getB(), 2);
+                    return new Number(n.getA() / b, n.getB() / b);
+                }
+        );
+    }
+
+    private Number mult(Number x, Number y)
+    {
+        double a = x.getA() * y.getB();
+        double b = y.getA() * x.getB();
+        return new Number(x.getA() * y.getA() + x.getB() * y.getB(), x.getA() * y.getB() + x.getB() * y.getA());
     }
 
     private int showUserInterface()
