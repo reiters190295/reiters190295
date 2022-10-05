@@ -17,7 +17,6 @@ public class NumberTester
     public NumberTester(String fileName)
     {
         this.fileName = fileName;
-        testFile();
     }
 
     public void setOddEvenTester(NumberTest oddTester)
@@ -48,13 +47,36 @@ public class NumberTester
                 switch(Integer.parseInt(split[0]))
                 {
                     case 1:
+                        if(oddTester.testNumber(Integer.parseInt(split[1])))
+                        {
+                            System.out.println("EVEN");
+                        }
+                        else
+                        {
+                            System.out.println("NOT EVEN");
+                        }
                         break;
 
-                    case 2:
+                    case 2:                        ;
+                        if(primeTester.testNumber(Integer.parseInt(split[1])))
+                        {
+                            System.out.println("PRIME");
+                        }
+                        else
+                        {
+                            System.out.println("NO PRIME");
+                        }
                         break;
 
                     case 3:
-                        palindromeTester.testNumber(Integer.parseInt(split[1]))
+                        if(palindromeTester.testNumber(Integer.parseInt(split[1])))
+                        {
+                            System.out.println("PALINDROME");
+                        }
+                        else
+                        {
+                            System.out.println("NO PALINDROME");
+                        }
                         break;
                 }
             }
@@ -62,20 +84,5 @@ public class NumberTester
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private boolean isEven(int number)
-    {
-        return
-    }
-
-    private boolean isPrime(int number)
-    {
-
-    }
-
-    private boolean isPalindrome(int number)
-    {
-
     }
 }
