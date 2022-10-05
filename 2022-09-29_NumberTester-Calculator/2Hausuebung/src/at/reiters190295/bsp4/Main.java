@@ -21,7 +21,8 @@ public class Main
                     break;
 
                 case 2:
-
+                    main.showVector();
+                    main.showCalcTypes();
                     break;
 
                 case 3:
@@ -33,19 +34,82 @@ public class Main
         }
     }
 
+    private void init()
+    {
+        AbstractCalculator ratio = new RationalCalculator(
+                (x, y) ->
+                {
+                    double xZ = x.getA() * y.getB();
+                    double yZ = y.getA() * x.getB();
+                    double n = x.getB() * y.getB();
+                    return new Number(xZ+yZ, n);
+                },
+                (x, y) ->
+                {
+                    double xZ = x.getA() * y.getB();
+                    double yZ = y.getA() * x.getB();
+                    double n = x.getB() * y.getB();
+                    return new Number(xZ-yZ, n);
+                },
+                (x, y) ->
+                {
+                    return new Number(x.getA()*y.getA(), x.getB()*y.getB());
+                },
+                (x, y) ->
+                {
+                    return new Number(x.getA()*y.getB(), x.getB()*y.getA());
+                }
+        );
+
+        AbstractCalculator vector = new VectorCalculator(
+                (x, y) ->
+                {
+                    return new Number(x.getA()+y.getA(), x.getB()+y.getB());
+                },
+                (x, y) ->
+                {
+                    return new Number(x.getA()-y.getA(), x.getB()-y.getB());
+                },
+                (x, y) ->
+                {
+                    double a = x.getA() * y.getB();
+                    double b = y.getA() * x.getB();
+                    return new Number(a, b);
+                },
+                (x, y) ->
+                {
+                    double a = x.getA() * x.getB();
+                    double b = y.getA() * y.getB();
+                    return new Number(a, b);
+                }
+        );
+    }
+
     private int showUserInterface()
     {
         while(true)
         {
-            System.out.println("1 ... Relational calculator");
+            System.out.println("1 ... Rational calculator");
             System.out.println("2 ... Vector calculator");
             System.out.println("3 ... Complex calculator");
             System.out.println("4 ... Exit program");
             System.out.print("> ");
             try
             {
-                int i = scanner.nextInt();
+                int i = Integer.parseInt(scanner.nextLine());
                 System.out.println();
+                if(i < 1 || i > 4)
+                {
+                    System.err.println();
+                    System.err.println("Please choose a number between 1-4!");
+                    System.err.println();
+                    System.err.flush();
+                }
+                else
+                {
+                    return i;
+                }
+
             }
             catch(NumberFormatException ex)
             {
@@ -74,8 +138,19 @@ public class Main
             System.out.print("> ");
             try
             {
-                int i = scanner.nextInt();
+                int i = Integer.parseInt(scanner.nextLine());
                 System.out.println();
+                if(i < 1 || i > 4)
+                {
+                    System.err.println();
+                    System.err.println("Please choose a number between 1-4!");
+                    System.err.println();
+                    System.err.flush();
+                }
+                else
+                {
+                    return;
+                }
             }
             catch(NumberFormatException ex)
             {
@@ -94,14 +169,15 @@ public class Main
         try
         {
             System.out.print("Enter number x a> ");
-            xa = scanner.nextInt();
+            xa = Integer.parseInt(scanner.nextLine());
             System.out.print("\nEnter number x b> ");
-            xb = scanner.nextInt();
+            xb = Integer.parseInt(scanner.nextLine());
             System.out.print("\nEnter number y a> ");
-            ya = scanner.nextInt();
+            ya = Integer.parseInt(scanner.nextLine());
             System.out.print("\nEnter number y b> ");
-            yb = scanner.nextInt();
+            yb = Integer.parseInt(scanner.nextLine());
             System.out.println();
+            return;
         }
         catch(NumberFormatException ex)
         {
