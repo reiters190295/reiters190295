@@ -36,7 +36,7 @@ public class Weapon
             int damage = Integer.parseInt(splitted[3]);
             int speed = Integer.parseInt(splitted[4]);
             int strength = Integer.parseInt(splitted[5]);
-            int value = Integer.parseInt(splitted[3]);
+            int value = Integer.parseInt(splitted[6]);
             return new Weapon(name, combatType, damageType, damage, speed, strength, value);
         }
         catch(Exception ex){}
