@@ -57,7 +57,7 @@ public class Functions
         Optional<Weapon> opt = weapons.stream().min((w1, w2) -> w1.getDamage()-w2.getDamage());
         System.out.println(opt.get());
 
-        System.out.println("\nHöchste strengthe:");
+        System.out.println("\nHöchste strength:");
         opt = weapons.stream().max((w1, w2) -> w1.getStrength()-w2.getStrength());
         System.out.println(opt.get());
 
@@ -69,29 +69,29 @@ public class Functions
         opt = weapons.stream().max((w1, w2) -> w1.getName().length()-w2.getName().length());
         System.out.println(opt.get());
 
-        System.out.println("\nListe String name");
+        System.out.println("\nListe String name:");
         List<String> names = weapons.stream().map(w -> w.getName()).collect(Collectors.toList());
         names.forEach(System.out::println);
 
-        System.out.println("\nint Array");
+        System.out.println("\nint Array:");
         List<Integer> speeds = weapons.stream().map(w -> w.getSpeed()).collect(Collectors.toList());
         Integer[] intArray = speeds.toArray(new Integer[speeds.size()]);
         Arrays.stream(intArray).forEach(i -> System.out.print(i + "; "));
         System.out.println();
 
-        System.out.println("\nsumme values");
+        System.out.println("\nsumme values:");
         int valueSum = weapons.stream().map(w -> w.getValue()).reduce(0, (v1, v2) -> v1+v2);
         System.out.println(valueSum);
 
-        System.out.println("\nhash summe");
+        System.out.println("\nhash summe:");
         int hashSum = weapons.stream().map(w -> w.hashCode()).reduce(0, (h1, h2) -> h1+h2);
         System.out.println(hashSum);
 
-        System.out.println("\nDuplikate");
+        System.out.println("\nDuplikates entfernen:");
         List<Weapon> list1 = weapons.stream().distinct().collect(Collectors.toList());
         list1.forEach(System.out::println);
 
-        System.out.println("\nValue um 10% erhoehen");
+        System.out.println("\nValue um 10% erhoehen:");
         weapons.stream().forEach(w -> w.setValue((int) (w.getValue()*1.1)));
         weapons.forEach(System.out::println);
     }
