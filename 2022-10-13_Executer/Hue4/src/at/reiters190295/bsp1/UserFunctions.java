@@ -17,37 +17,32 @@ public class UserFunctions
         int[] arr = new int[2];
         System.out.print("chunks> ");
         arr[0] = Integer.parseInt(scanner.nextLine());
-        System.out.println("\ndivider> ");
+        System.out.print("divider> ");
         arr[1] = Integer.parseInt(scanner.nextLine());
         System.out.println();
         return arr;
     }
 
-    public static void divideInChunks(List<Integer> list, int amount, int divider)
+    public static void divideInChunks(List<Integer> list, int chunks, int divider)
     {
         List<Integer> chunkInts = new ArrayList<>();
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(amount);
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(chunks/2);
 
-
-        //int chunkSize = list.size() / amount;
+        int amount = list.size() / chunks;
         for(int i : list)
         {
             chunkInts.add(i);
             if(chunkInts.size() == amount)
             {
-                executor.execute(new Chunk(chunkInts, divider));
+                executor.execute(new Chunk(new ArrayList<Integer>(chunkInts), divider));
                 chunkInts.clear();
             }
         }
 
         if(!chunkInts.isEmpty())
         {
-            executor.execute(new Chunk(chunkInts, divider));
+            executor.execute(new Chunk(new ArrayList<Integer>(chunkInts), divider));
         }
-
-        for(int i = 0; i < amount; i++)
-        {
-            chunkInts.add(list.get(i));
-        }
+        executor.shutdown();
     }
 }
