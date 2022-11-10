@@ -1,7 +1,5 @@
-package net.eaustria;
+package net.eaustria.bsp1;
 
-import java.util.function.IntToDoubleFunction;
-import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 public class Main
