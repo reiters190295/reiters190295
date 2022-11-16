@@ -58,5 +58,7 @@ public class WebCrawler7 implements ILinkHandler {
     @Override
     public void queueLink(String link){
     }
+
+
 }
 
