@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="web_crawler">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/htmlparser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/htmllexer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../../../learning/HTL/POS/2022-10-20_Concurrency/jsoup-1.15.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
